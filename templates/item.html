@@ -1,0 +1,8 @@
+{% if item %}
+<h5> {{ item.name }}</h5>
+<img src="/static/{{ item.picture }}">
+<p> {{ item.category }}</p>
+
+{% else %}
+<h5> Oops! no item was found via search :( </h5>
+{% endif %}

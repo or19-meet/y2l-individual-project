@@ -5,15 +5,9 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class User(Base):
-    __tablename__ = "User"
-    id_table = Column(Integer, primary_key = True)
-    name = Column(String)
-    password = Column(String)
-
-    def __repr__(self):
-        return ("Username: {},\n"
-            "password: {}. \n"
-        	).format(
-        		self.name,
-                self.password)
+class Products(Base):
+    __tablename__ = 'Product'
+    id = Column(Integer, primary_key=True)
+    name=Column(String)
+    picture=Column(String)
+    category=Column(String)
