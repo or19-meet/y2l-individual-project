@@ -29,15 +29,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="home.html" class="w3-bar-item w3-button w3-padding-large">killerQueen</a>
-    <a href="home.html#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
-    <a href="home.html#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
-    <a href="home.html#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <a href="{{url_for('home')}}" class="w3-bar-item w3-button w3-padding-large">killerQueen</a>
+    <a href="{{url_for('band')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
+    <a href="{{url_for('tour')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+    <a href="{{url_for('contact')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="store.html" class="w3-bar-item w3-button">STORE</a>
-        <a href="photos.html" class="w3-bar-item w3-button">search</a>
+        <a href="{{url_for('store')}}" class="w3-bar-item w3-button">STORE</a>
+        
 
       </div>
     </div>
@@ -69,37 +69,43 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container">
-    <img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%">
-    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
-      <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
-      <h1 class="w3-hide-small">COLLECTION 2016</h1>
-      <p><a href="#jeans" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p>
-    </div>
-  </div>
+ 
 
   <div class="w3-container w3-text-grey" id="jeans">
     <p>8 items</p>
   </div>
 
+{% for item in items %}
+<div class="col-sm-3">
+  <div class="card">
+    <div class="card">
+      <img class="card-img-top" src={{item.picture}}>
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text"> Price: {{item.price}}</p>
+      </div>
+    </div>
+    {% endfor %}
   <!-- Product grid -->
-  <div class="w3-row w3-grayscale">
+ <!--  <div class="w3-row w3-grayscale">
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody-The-Original-Soundtrack/5XR70000000"><img src="shop1.jpg" style="width:100%"></a>
+        <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody-The-Original-Soundtrack/5XR70000000">
+          <img src="/static/img/shop1.jpg" style="width:100%"></a>
         <p>Bohemian Rhapsody (The Original Soundtrack)<br><b>$11.79</b></p>
       </div>
       <div class="w3-container">
-        <a href="https://www.queenonlinestore.com/*/*/-Jazz-World-Tour-1978-79-Ringer-T-Shirt/5Z0D0000000"> <img src="shop2.jpg" style="width:100%"></a>
-        <p>'Jazz' World Tour 1978-79 Ringer T-Shirt<br><b>$39.99</b></p>
+        <a href="https://www.queenonlinestore.com/*/*/-Jazz-World-Tour-1978-79-Ringer-T-Shirt/5Z0D0000000"> 
+          <img src="/static/img/shop2.jpg" style="width:100%"></a>
+        <p>Jazz World Tour 1978-79 Ringer T-Shirt<br><b>$39.99</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
         <div class="w3-display-container">
-          <a href="https://www.rockabilia.com/browse/artists-groups/q/queen/queen-queen-distressed-t-shirt-411747.html"><img src="shop3.jpg" style="width:100%">
+          <a href="https://www.rockabilia.com/browse/artists-groups/q/queen/queen-queen-distressed-t-shirt-411747.html">
+            <img src="/static/img/shop3.jpg" style="width:100%">
           <span class="w3-tag w3-display-topleft">New</span>
           <div class="w3-display-middle w3-display-hover">
             <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
@@ -108,38 +114,44 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
         <p>Queen Distressed T-shirt<br><b>$19.99</b></p>
       </div>
       <div class="w3-container">
-        <a href="https://www.rockabilia.com/browse/artists-groups/q/queen/queen-crest-type-mug-coffee-mug-403920.html"><img src="shop4.jpg" style="width:100%"></a>
+        
+        <a href="https://www.rockabilia.com/browse/artists-groups/q/queen/queen-crest-type-mug-coffee-mug-403920.html">
+          <img src="/static/img/shop4.jpg" style="width:100%"></a>
         <p>Crest Type Mug Coffee Mug<br><b>$18.99</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-       <a href="https://www.queenonlinestore.com/*/*/2018-Brian-May-Jazz-Sixpence/5WY60000000"><img src="shop5.jpg" style="width:100%"></a>
-        <p>2018 Brian May 'Jazz' Sixpence<br><b>$10</b></p>
+       <a href="https://www.queenonlinestore.com/*/*/2018-Brian-May-Jazz-Sixpence/5WY60000000">
+        <img src="/static/img/shop5.jpg" style="width:100%"></a>
+        <p>2018 Brian May Jazz Sixpence<br><b>$10</b></p>
       </div>
+
       <div class="w3-container">
         <div class="w3-display-container">
-         <a href="https://www.queenonlinestore.com/*/*/Smile/5YRN0000000"><img src="shop8.jpg" style="width:100%"></a>
+         <a href="https://www.queenonlinestore.com/*/*/Smile/5YRN0000000">
+          <img src="/static/img/shop8.jpg" style="width:100%"></a>
           <span class="w3-tag w3-display-topleft">Sale</span>
           <div class="w3-display-middle w3-display-hover">
             <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
           </div>
         </div>
-        <p>'Jazz' 40th Anniversary Unisex White Sweatshirt <br><b class="w3-text-red">$39.15</b></p>
+        <p>Jazz 40th Anniversary Unisex White Sweatshirt <br><b class="w3-text-red">$39.15</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-         <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000"><img src="shop6.png" style="width:100%"></a>
-        <p>Bohemian Rhapsody
-    Double Vinyl LP<br><b>$35.23</b></p>
+         <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000">
+          <img src="/static/img/shop6.png" style="width:100%"></a>
+        <p>Bohemian Rhapsody Double Vinyl LP<br><b>$35.23</b></p>
       </div>
       <div class="w3-container">
-        <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000"><img src="shop7.jpg" style="width:100%"></a>
-        <p>Smile
-    T-Shirt<br><b>$32.63</b></p>
+        <a href="https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000">
+          <img src="/static/img/shop7.jpg" style="width:100%"></a>
+        <p>Smile T-Shirt<br><b>$32.63</b></p>
       </div>
     </div>
   </div>
+ -->
