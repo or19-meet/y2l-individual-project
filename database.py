@@ -2,25 +2,25 @@ from model import Base, Item
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine('sqlite:///database.db')
+engine = create_engine('sqlite:///databases.db')
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-def add_item(name, price, picture):
+def add_item(name, price, picture, link):
     item_object = Item(name=name,
-     price=price, picture=picture)
+     price=price, picture=picture, link=link)
     session.add(item_object)
     session.commit()
 
-add_item('Bohemian Rhapsody (The Original Soundtrack)', '$11.79', '/static/img/shop1.jpg')
-add_item('Jazz World Tour 1978-79 Ringer T-Shirt','$39.99', '/static/img/shop2.jpg')
-add_item('Queen Distressed T-shirt','$19.99','/static/img/shop3.jpg')
-add_item('Crest Type Mug Coffee Mug','$18.99', '/static/img/shop4.jpg')
-add_item('2018 Brian May Jazz Sixpence','$10','/static/img/shop5.jpg')
-add_item('Jazz 40th Anniversary Unisex White Sweatshirt','$39.15','/static/img/shop6.jpg')
-add_item('Bohemian Rhapsody Double Vinyl LP','$35.23','/static/img/shop7.jpg')
-add_item('Smile T-Shirt','$32.63','/static/img/shop8.jpg')
+add_item('Bohemian Rhapsody (The Original Soundtrack)', '$11.79', '/static/img/shop1.jpg','https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody-The-Original-Soundtrack/5XR70000000')
+add_item('Jazz World Tour 1978-79 Ringer T-Shirt','$39.99', '/static/img/shop2.jpg','https://www.queenonlinestore.com/*/*/-Jazz-World-Tour-1978-79-Ringer-T-Shirt/5Z0D0000000')
+add_item('Queen Distressed T-shirt','$19.99','/static/img/shop3.jpg','https://www.rockabilia.com/browse/artists-groups/q/queen/queen-queen-distressed-t-shirt-411747.html')
+add_item('Crest Type Mug Coffee Mug','$18.99', '/static/img/shop4.jpg','https://www.rockabilia.com/browse/artists-groups/q/queen/queen-crest-type-mug-coffee-mug-403920.html')
+add_item('2018 Brian May Jazz Sixpence','$10','/static/img/shop5.jpg','https://www.queenonlinestore.com/*/*/2018-Brian-May-Jazz-Sixpence/5WY60000000')
+add_item('Jazz 40th Anniversary Unisex White Sweatshirt','$39.15','/static/img/shop6.jpg','https://www.queenonlinestore.com/*/*/Smile/5YRN0000000')
+add_item('Bohemian Rhapsody Double Vinyl LP','$35.23','/static/img/shop7.jpg','https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000')
+add_item('Smile T-Shirt','$32.63','/static/img/shop8.jpg','https://www.queenonlinestore.com/*/*/Bohemian-Rhapsody/60OW0000000')
 
 
 def query_all_items():

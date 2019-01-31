@@ -11,6 +11,8 @@ class Item(Base):
 	name=Column(String)
 	price=Column(String)
 	picture=Column(String)
+	link=Column(String)
+
 		
 
 
